@@ -1,0 +1,35 @@
+{ "name": "sortedjson",
+  "version": "0.1.0",
+  "description": "JSON.stringify with keys sorted. Supports custom ordering, replacer and space.",
+  "keywords": [
+    "json",
+    "JSON",
+    "keys",
+    "sort",
+    "sorted"
+  ],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/sortedjson-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/sortedjson-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/sortedjson-js/issues"
+  },
+
+  "private": false, "license": "ISC",
+
+  "main": "sortedjson.js",
+  "scripts": { "test": "nodejs test/all.js" },
+  "directories": { "test": "test" },
+
+  "dependencies": { "deepsortobj": "^0.1.0" },
+  "devDependencies": {
+    "equal-pmb": "^0.1.0"
+  },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}

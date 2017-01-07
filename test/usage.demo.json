@@ -1,0 +1,26 @@
+﻿{ "ant": {
+    "colors": [
+      "red",
+      "black"
+    ]
+  },
+  "cat": {
+    "colors": [
+      "white",
+      "orange"
+    ],
+    "sounds": [
+      "meow",
+      "purr"
+    ]
+  },
+  "dog": {
+    "colors": [
+      "grey",
+      "white"
+    ],
+    "sounds": [
+      "woof"
+    ]
+  }
+}
