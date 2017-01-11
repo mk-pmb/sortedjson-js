@@ -2,7 +2,8 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-require('./usage.demo.js').compare();
+require('usnam-pmb');
+require('./usage.js').compare();
 
 
 

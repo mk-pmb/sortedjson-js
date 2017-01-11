@@ -25,8 +25,6 @@ EX.actual = (function () {
   return console.text;
 }());
 
-EX.compare = function () {
-  eq(EX.actual.split('\n'), EX.expected.split('\n'));
-};
+EX.compare = function () { eq.lines(EX.actual, EX.expected); };
 
 if (require.main === module) { EX.compare(); }

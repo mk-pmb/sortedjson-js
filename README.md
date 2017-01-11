@@ -78,9 +78,9 @@ and all its non-array object values `.sortObj()`ed as well.
 Usage
 -----
 
-From [test/usage.demo.js](test/usage.demo.js):
+From [test/usage.js](test/usage.js):
 
-<!--#include file="test/usage.demo.js" start="  //#u" stop="  //#r"
+<!--#include file="test/usage.js" start="  //#u" stop="  //#r"
   outdent="  " code="javascript" -->
 <!--#verbatim lncnt="8" -->
 ```javascript
@@ -93,7 +93,7 @@ console.log(sortedJson(pets));
 ```
 <!--/include-->
 
-Output: [test/usage.demo.json](test/usage.demo.json)
+Output: [test/usage.json](test/usage.json)
 
 
 
