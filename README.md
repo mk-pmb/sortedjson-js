@@ -45,14 +45,15 @@ in default `Array.prototype.sort()` order.
 Like above, except if¹ you provide a number or a string as `space`,
 you may optionally provide your own `sortOpts`, too, which can be
 either a function or an options object.
-`sortOpts` will be passed as the `how` argument to [`sortObj()`][deepsortobj].
+A shallow copy of `sortOpts` will be passed as the `how` argument to
+[`sortObj()`][deepsortobj], possibly with `keyPrefix` and `keySuffix`
+modified so don't rely on them.
 Some additional options in `sortOpts` are supported by `sortedJson`:
 
-  * `stfy` a function to use instead of the original (probably native)
+  * `stfy`: a function to use instead of the original (probably native)
     `JSON.stringify` in order to encode the sorted object.
     If a `replacer` is given as well, the `replacer` will always be applied
     using the original `JSON.stringify`.
-
 
 (¹ Requires `space` because a function that has no `space` argument before
 it could be confused with a `replacer` function.)
@@ -100,23 +101,27 @@ Output: [test/usage.json](test/usage.json)
 <!--#toc stop="scan" -->
 
 
+Known issues
+------------
+
+* Needs more/better tests and docs.
+* Versions 0.1.x did not work around the array index priority problem
+  described in [deepsortobj][deepsortobj].
+
+
+
 Related projects
 ----------------
 
-  * [deepsortobj][deepsortobj], and the ones listed there
-  * [JSON.sortify][json-sortify]
-  * [sorted-json](https://github.com/pastgift/sorted-json-js)
+* [deepsortobj][deepsortobj], and the ones listed there
+* [JSON.sortify][json-sortify]
+* [sorted-json](https://github.com/pastgift/sorted-json-js)
 
 
   [json-sortify]: https://github.com/ThomasR/JSON.sortify
   [deepsortobj]: https://github.com/mk-pmb/deepsortobj-js
   [mdn-stfy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
 
-
-Known issues
-------------
-
-  * Needs more tests.
 
 
 License

@@ -2,18 +2,7 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-var EX = module.exports, eq = require('equal-pmb'),
-  stripBom = require('strip-bom'),
-  rrfs = require('read-resolved-file-sync')(require);
-
-EX.expected = stripBom(rrfs(module.filename + 'on')).replace(/\s+$/, '');
-
-EX.actual = (function () {
-  function console() {
-    console.text += Array.prototype.slice.call(arguments).join(' ');
-  }
-  console.log = console;
-  console.text = '';
+require('./shared').compareConsoleLogToFixture(function usageTest(console) {
   //#u
   var sortedJson = require('sortedjson'), pets = {
     dog: { sounds: [ 'woof' ],            colors: [ 'grey', 'white' ] },
@@ -22,9 +11,4 @@ EX.actual = (function () {
   };
   console.log(sortedJson(pets));
   //#r
-  return console.text;
-}());
-
-EX.compare = function () { eq.lines(EX.actual, EX.expected); };
-
-if (require.main === module) { EX.compare(); }
+}, module);

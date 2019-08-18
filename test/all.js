@@ -3,7 +3,8 @@
 'use strict';
 
 require('usnam-pmb');
-require('./usage.js').compare();
+require('./usage');
+require('./index_priority');
 
 
 

@@ -12,9 +12,20 @@
   var EX, nativeJsonify = JSON.stringify.bind(JSON),
     sortObj = require('deepsortobj');
 
+  function suf0(json) { return json.replace(suf0.rgx, '$1'); }
+  suf0.suffix = '\x00';
+  suf0.rgx = /(?:\x00|\\u0000)("\s*:)/g;
+  // ^- We don't need to care how many backslashes were in front of \u
+  //    because the raw quote + colon following it limit matches to
+  //    object keys and we suffixed all of them.
+
   EX = function sortedJsonStringify(data, replacer, space, sortOpts) {
     sortOpts = (sortOpts || false);
-    var negSpace;
+    var negSpace, deepSortOpts = sortOpts, unSuf = sortOpts.unsuffixKeys;
+    if (!(sortOpts.keyPrefix || sortOpts.keySuffix)) {
+      unSuf = suf0;
+      deepSortOpts = Object.assign({}, sortOpts, { keySuffix: unSuf.suffix });
+    }
     switch (typeof replacer) {
     case 'number':
     case 'string':
@@ -26,11 +37,12 @@
     if (replacer) {
       data = JSON.parse(nativeJsonify(data, replacer));
     }
-    data = sortObj(data, sortOpts);
+    data = sortObj(data, deepSortOpts);
     if (space === undefined) { space = -2; }
     negSpace = (+space < 0);
     if (negSpace) { space = -space; }
     data = (sortOpts.stfy || nativeJsonify)(data, null, space);
+    if (unSuf) { data = unSuf(data); }
     if (negSpace && (data.substr(1, 2) === '\n ')) {
       data = data.slice(0, 1) + data.slice(3);
     }
