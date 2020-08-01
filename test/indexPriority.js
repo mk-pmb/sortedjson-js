@@ -2,7 +2,9 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-require('./shared').compareConsoleLogToFixture(require('sortedjson')({
+var tu = require('./lib/testUtil');
+
+tu.compareConsoleLogToFixture(require('sortedjson')({
   'c': 0,
   'y': 0,
   'b': 0,

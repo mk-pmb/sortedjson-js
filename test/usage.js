@@ -2,7 +2,9 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-require('./shared').compareConsoleLogToFixture(function usageTest(console) {
+var tu = require('./lib/testUtil');
+
+tu.compareConsoleLogToFixture(function usageTest(console) {
   //#u
   var sortedJson = require('sortedjson'), pets = {
     dog: { sounds: [ 'woof' ],            colors: [ 'grey', 'white' ] },

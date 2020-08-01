@@ -3,8 +3,9 @@
 'use strict';
 
 require('usnam-pmb');
+
 require('./usage');
-require('./index_priority');
+require('./indexPriority');
 
 
 
