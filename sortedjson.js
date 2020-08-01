@@ -20,13 +20,10 @@
   //    object keys and we suffixed all of them.
 
   EX = function sortedJsonStringify(data, replacer, space, sortOpts) {
-    sortOpts = (sortOpts || false);
-    var negSpace, deepSortOpts = sortOpts, unSuf = sortOpts.unsuffixKeys;
-    if (!(sortOpts.keyPrefix || sortOpts.keySuffix)) {
-      unSuf = suf0;
-      deepSortOpts = Object.assign({}, sortOpts, { keySuffix: unSuf.suffix });
-    }
     switch (typeof replacer) {
+    case 'object':
+      // Both null and Arrays are valid replacer values for native stringfy.
+      break;
     case 'number':
     case 'string':
       sortOpts = space;
@@ -37,13 +34,26 @@
     if (replacer) {
       data = JSON.parse(nativeJsonify(data, replacer));
     }
+
+    sortOpts = (sortOpts || false);
+    var negSpace, deepSortOpts = sortOpts, unSuf = sortOpts.unsuffixKeys,
+      customJsonify = sortOpts.stfy;
+
+    if (!(sortOpts.keyPrefix || sortOpts.keySuffix)) {
+      unSuf = suf0;
+      deepSortOpts = Object.assign({}, sortOpts, { keySuffix: unSuf.suffix });
+    }
     data = sortObj(data, deepSortOpts);
-    if (space === undefined) { space = -2; }
-    negSpace = (+space < 0);
-    if (negSpace) { space = -space; }
-    data = (sortOpts.stfy || nativeJsonify)(data, null, space);
+
+    if (!customJsonify) {
+      if (space === undefined) { space = -2; }
+      negSpace = (+space < 0);
+      if (negSpace) { space = -space; }
+    }
+
+    data = (customJsonify || nativeJsonify)(data, null, space);
     if (unSuf) { data = unSuf(data); }
-    if (negSpace && (data.substr(1, 2) === '\n ')) {
+    if (negSpace && (data.slice(1, 3) === '\n ')) {
       data = data.slice(0, 1) + data.slice(3);
     }
     return data;

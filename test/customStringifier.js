@@ -34,21 +34,15 @@ var eq = require('equal-pmb'),
 
     // sortedjson shall have the least possible assumptions about what
     // kinds of indentation options a custom jsonifier might understand.
-    // At the very minimum we should accept any integer number:
-    -2,
+    // For example, in this case, -1 means to strip even more whitespace
+    // than sortedJson's negative indent magic:
+    -1,
 
     { stfy: univeil.jsonify });
-
   // NB: The control characters are encoded as Unicode escapes.
-  eq.lines(json, [
-    '{ "devCtrl": "\\' + 'u00' + '90",',
-    '  "four": 4,',
-    '  "nbsp": "\\' + 'u00' + 'A0",',
-    '  "one": 1,',
-    '  "zero": 0',
-    '}',
-  ]);
+  eq(json, '{"devCtrl": "\\' + 'u00' + '90", "four": 4, "nbsp": "\\'
+    + 'u00' + 'A0", "one": 1, "zero": 0}');
   // Check it works as a preset:
-  eq.lines(sortedJson.preset(-2, { stfy: univeil.jsonify })(input), json);
+  eq.lines(sortedJson.preset(-1, { stfy: univeil.jsonify })(input), json);
 
 }());

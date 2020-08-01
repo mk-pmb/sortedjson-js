@@ -1,5 +1,5 @@
 { "name": "sortedjson",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "JSON.stringify with keys sorted. Supports custom ordering, replacer and space.",
   "keywords": [
     "json",
