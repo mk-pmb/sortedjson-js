@@ -1,5 +1,5 @@
 { "name": "sortedjson",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "JSON.stringify with keys sorted. Supports custom ordering, replacer and space.",
   "keywords": [
     "json",
@@ -29,9 +29,10 @@
     "deepsortobj": "^0.1.2"
   },
   "devDependencies": {
-    "equal-pmb": "^0.1.20",
+    "equal-pmb": "^0.1.23",
     "read-resolved-file-sync": "^1.0.1",
     "strip-bom": "^4.0.0",
+    "univeil": "^0.1.17",
     "usnam-pmb": "^0.2.4"
   },
 

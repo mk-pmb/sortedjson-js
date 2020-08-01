@@ -41,4 +41,7 @@ var eq = require('equal-pmb'),
     '  "zero": 0',
     '}',
   ]);
+  // Check it works as a preset:
+  eq.lines(sortedJson.preset(2, { stfy: univeil.jsonify })(input), json);
+
 }());
