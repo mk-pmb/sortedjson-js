@@ -28,7 +28,7 @@ API
 
 ### sortedJson(data[, replacer][, space])
 
-Behaves like [native JSON.stringify][mdn-stfy], just with they keys sorted
+Behaves like [native JSON.stringify][mdn-stfy], just with the keys sorted
 in default `Array.prototype.sort()` order.
 
   * Non-standard `space`: Negative numbers mean to use `n=-space` space
