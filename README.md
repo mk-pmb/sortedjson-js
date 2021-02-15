@@ -38,6 +38,7 @@ in default `Array.prototype.sort()` order.
     and space will put the first item or key on the same line as the opening
     bracket.
     Default: `-2`
+    * Does not apply if the `sortOpts.stfy` option is used (see below).
 
 
 ### sortedJson(data, [replacer,] space[, sortOpts])
@@ -54,6 +55,10 @@ Some additional options in `sortOpts` are supported by `sortedJson`:
     `JSON.stringify` in order to encode the sorted object.
     If a `replacer` is given as well, the `replacer` will always be applied
     using the original `JSON.stringify`.
+    * If you're going to use
+      [`univeil`](https://www.npmjs.com/package/univeil)'s
+      `jsonify` as `stfy`, you may instead use the pre-made combination
+      [`safe-sortedjson`](https://www.npmjs.com/package/safe-sortedjson).
 
 (¹ Requires `space` because a function that has no `space` argument before
 it could be confused with a `replacer` function.)
