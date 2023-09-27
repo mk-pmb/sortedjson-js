@@ -5,8 +5,9 @@
 require('usnam-pmb');
 
 require('./usage');
-require('./indexPriority');
 require('./customStringifier');
+require('./indexPriority');
+require('./whitespace');
 
 
 
