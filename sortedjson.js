@@ -52,9 +52,11 @@
     }
 
     data = (customJsonify || nativeJsonify)(data, null, space);
-    if (unSuf) { data = unSuf(data); }
-    if (negSpace && (data.slice(1, 3) === '\n ')) {
-      data = data.slice(0, 1) + data.slice(3);
+    if (data) {
+      if (unSuf) { data = unSuf(data); }
+      if (negSpace && (data.slice(1, 3) === '\n ')) {
+        data = data.slice(0, 1) + data.slice(3);
+      }
     }
     return data;
   };
